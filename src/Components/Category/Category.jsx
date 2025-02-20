@@ -1,11 +1,16 @@
-import React from 'react'
-
-function Catagory() {
+import React from "react";
+import { categoryInfos } from "./categoryFullinfos";
+import CategoryCard from "./CategoryCard";
+import classes from "./category.module.css"
+function Category() {
   return (
-    <div>
-      
-    </div>
-  )
+    <section className={classes.category_container}>
+      {categoryInfos.map((infos) => (
+        <CategoryCard key={infos.id} data={infos} />
+      ))}
+      )
+    </section>
+  );
 }
 
-export default Catagory
+export default Category;

@@ -7,7 +7,7 @@ import styles from "./carousel.module.css"
 
 const CarouselEffect = () => {
   return (
-    <div>
+    <div >
     <Carousel
     autoPlay={true}
     infiniteLoop={true}
@@ -15,7 +15,7 @@ const CarouselEffect = () => {
     showThumbs={false}
   >
      {
-img.map((ImageItemlink,index)=>{
+img?.map((ImageItemlink,index)=>{
 
     return <img key={index} src={ImageItemlink}/>;
 })
@@ -25,6 +25,9 @@ img.map((ImageItemlink,index)=>{
 
 
   </Carousel>
+  <div className={styles.hero_img}>
+
+  </div>
 
     </div>
   );
