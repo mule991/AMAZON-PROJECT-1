@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Routing from './Router.jsx'
 import Header from './Components/Header/Header';
 import Carousel from './Components/Carousel/CarouselEffect';
 import Category from './Components/Category/Category';
