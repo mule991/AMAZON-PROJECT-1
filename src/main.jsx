@@ -2,9 +2,14 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
+import { DataProvider } from './Components/DataProvider/DataProvider.jsx';
+import { initialState, reducer } from './Utility/reducer.jsx';
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <DataProvider reducer={reducer} initialstate={initialState}>
+      <App />
+    </DataProvider>
+    
+  </StrictMode>
+);

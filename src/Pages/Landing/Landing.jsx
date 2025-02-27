@@ -1,9 +1,9 @@
 import { CardActions } from "@mui/material";
 import React from "react";
 import LayOut from "../../Components/LayOut/LayOut";
-import Carousel from '../../Components/Carousel/CarouselEffect';
-import Category from '../../Components/Category/CategoryCard';
-import Product from '../../Components/Product/Product';
+import Carousel from "../../Components/Carousel/CarouselEffect";
+import Category from "../../Components/Category/Category";
+import Product from "../../Components/Product/Product";
 
 function Landing() {
   return (
@@ -11,8 +11,7 @@ function Landing() {
       <Carousel />
       <Category />
       <Product />
-      </LayOut>
-    
+    </LayOut>
   );
 }
 

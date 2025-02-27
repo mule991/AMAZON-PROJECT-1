@@ -5,17 +5,17 @@ import { Link } from "react-router-dom";
 
 
 function CategoryCard({data}) {
-  
+   if (!data) return null;
     return (
         
       <div className={classes.category}>
-        <a href={`/category/${data.name}`}>
+        <Link to={`/category/${data?.name}`}>
           <span>
             <h2>{data?.title}</h2>
           </span>
           <img src={data?.imglink} alt="" />
           <p>shop now</p>
-        </a>
+        </Link>
       </div>
     );
 }

@@ -1,26 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./Header.module.css";
 import {Link} from 'react-router-dom'
-
 import { SlLocationPin } from "react-icons/sl";
 import { BsSearch } from "react-icons/bs";
 import LowerHeader from "./LowerHeader";
-
 import { BiCart } from "react-icons/bi";
+import { DataContext } from "../DataProvider/DataProvider";
 
 function Header() {
+
+  const [{basket},dispatch] = useContext(DataContext)
+  const totalItem = basket?.reduce((amount,item)=>{
+    return item.amount + amount
+  },0)
+
   return (
-    <>
+    <search className={classes.fixed}>
       <section>
         <div className={classes.header_container}>
           {/* <link to="/"> */}
           <div className={classes.logo_container}>
-            <a href="/">
+            <Link to="/">
               <img
                 src="https://pngimg.com/uploads/amazon/amazon_PNG25.png"
                 alt=""
               />
-            </a>
+            </Link>
             <span>
               <SlLocationPin />
             </span>
@@ -42,7 +47,7 @@ function Header() {
           </div>
           {/* {right side link} */}
           <div className={classes.order_container}>
-            <a href="" className={classes.language}>
+            <Link to="" className={classes.language}>
               <img
                 src="https://img.freepik.com/free-photo/united-states-america-flag-background_23-2148157263.jpg?semt=ais_hybrid"
                 alt=""
@@ -50,30 +55,30 @@ function Header() {
               <select name="" id="">
                 <option value="">EN</option>
               </select>
-            </a>
+            </Link>
             {/* {three components} */}
-            <a href="">
+            <Link to="">
               <p>Sign in</p>
               <span>Account & Lists</span>
-            </a>
+            </Link>
             {/* {orders} */}
-            <a href="/orders">
+            <Link to="/orders">
               <p>returns</p>
               <span>& orders</span>
-            </a>
+            </Link>
             {/* {cart} */}
-            <a href="/cart" className={classes.cart}>
+            <Link to="/cart" className={classes.cart}>
               {/* {icon} */}
               <BiCart size={35} />
-              <span>0</span>
-            </a>
+              <span>{totalItem}</span>
+            </Link>
           </div>
          
         </div>
          
       </section>
       <LowerHeader/>
-    </>
+    </search>
   );
 }
 export default Header;
