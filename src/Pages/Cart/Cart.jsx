@@ -5,26 +5,26 @@ import { DataContext } from "../../Components/DataProvider/DataProvider";
 import ProductCard from "../../Components/Product/ProductCard";
 import CurrencyFormat from "../../Components/CurrencyFormatter/CurrencyFormatter";
 import { Link } from "react-router-dom";
-import {Type} from '../../Utility/action.type'
+import { Type } from "../../Utility/action.type";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-
 
 function Cart() {
   const [{ basket, user }, dispatch] = useContext(DataContext);
   const total = basket.reduce((amount, item) => {
-    return item.price + amount;
+    return item.price * item.amount + amount;
   }, 0);
-  const increment =(item)=>{
+  const increment = (item) => {
     dispatch({
-      type:Type.ADD_TO_BASKET,
-      item
-    })
-  }
-  const decrement =(id) => {
-    dispatch({
-      type :Type.REMOVE_FROM_BASKET,id
+      type: Type.ADD_TO_BASKET,
+      item,
     });
-  }
+  };
+  const decrement = (id) => {
+    dispatch({
+      type: Type.REMOVE_FROM_BASKET,
+      id,
+    });
+  };
   return (
     <LayOut>
       <section className={classes.container}>
@@ -62,14 +62,12 @@ function Cart() {
                   </div>
                 </section>
               );
-               
-             
-         })
+            })
           )}
         </div>
 
         {basket?.lenght !== 0 && (
-          <div>
+          <div className={classes.subtotal}>
             <div>
               <p>Subtotal ({basket?.length}item)</p>
               <CurrencyFormat amount={total} />

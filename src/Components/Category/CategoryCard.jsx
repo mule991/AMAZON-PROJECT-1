@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 
 function CategoryCard({data}) {
+  
    if (!data) return null;
     return (
         

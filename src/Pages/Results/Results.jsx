@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./Results.module.css";
 import LayOut from "../../Components/LayOut/LayOut";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { productUrl } from "../../Api/endPoints";
+import ProductCard from "../../Components/Product/ProductCard";
 
 function Results() {
   const [results, setResults] = useState([]);
